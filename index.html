@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>QuadriteOS</title>
+    <!-- 核心样式 -->
+    <link rel="stylesheet" href="./assets/css/desktop.css">
+    <link rel="stylesheet" href="./assets/css/widgets.css">
+    <!-- 应用样式 -->
+    <link rel="stylesheet" href="./assets/css/apps/calc.css">
+    <link rel="stylesheet" href="./assets/css/apps/notepad.css">
+    <link rel="stylesheet" href="./assets/css/apps/edge.css">
+    <!-- 图标库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- 桌面容器 -->
+    <div id="desktop" style="background: url('./assets/img/wallpaper.jpg') center/cover;">
+        <!-- 桌面小组件容器 -->
+        <div id="desktop-widgets"></div>
+        
+        <!-- 任务栏 -->
+        <div id="taskbar">
+            <div id="start-menu-btn"><i class="bi bi-windows"></i></div>
+            <div id="taskbar-apps">
+                <div class="taskbar-app" data-app="edge"><i class="bi bi-browser-chrome"></i></div>
+                <div class="taskbar-app" data-app="calc"><i class="bi bi-calculator"></i></div>
+                <div class="taskbar-app" data-app="notepad"><i class="bi bi-file-text"></i></div>
+            </div>
+            <div id="taskbar-right">
+                <div class="taskbar-widget" data-widget="weather"><i class="bi bi-cloud-sun"></i></div>
+                <div class="taskbar-widget" data-widget="monitor"><i class="bi bi-cpu"></i></div>
+                <div id="system-tray"><i class="bi bi-gear"></i></div>
+            </div>
+        </div>
+
+        <!-- 开始菜单 -->
+        <div id="start-menu" class="hidden">
+            <div id="sm-user"><i class="bi bi-person-circle"></i></div>
+            <div id="sm-apps">
+                <div class="sm-app" data-app="edge">浏览器</div>
+                <div class="sm-app" data-app="calc">计算器</div>
+                <div class="sm-app" data-app="notepad">记事本</div>
+                <div class="sm-app" data-app="settings">设置</div>
+            </div>
+        </div>
+
+        <!-- 窗口模板容器（默认隐藏） -->
+        <div id="window-templates" class="hidden">
+            <!-- 计算器窗口 -->
+            <div class="window calc" data-app="calc">
+                <div class="titbar">
+                    <p>计算器</p>
+                    <div class="win-btns">
+                        <button class="win-min"><i class="bi bi-dash"></i></button>
+                        <button class="win-close"><i class="bi bi-x"></i></button>
+                    </div>
+                </div>
+                <div class="content" id="calc-content"></div>
+            </div>
+            <!-- 记事本窗口 -->
+            <div class="window notepad" data-app="notepad">
+                <div class="titbar">
+                    <p>记事本</p>
+                    <div class="win-btns">
+                        <button class="win-min"><i class="bi bi-dash"></i></button>
+                        <button class="win-max"><i class="bi bi-box"></i></button>
+                        <button class="win-close"><i class="bi bi-x"></i></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <textarea id="notepad-content" placeholder="输入文本..."></textarea>
+                </div>
+            </div>
+            <!-- 浏览器窗口 -->
+            <div class="window edge" data-app="edge">
+                <div class="titbar">
+                    <p>Quadrite 浏览器</p>
+                    <div class="win-btns">
+                        <button class="win-min"><i class="bi bi-dash"></i></button>
+                        <button class="win-max"><i class="bi bi-box"></i></button>
+                        <button class="win-close"><i class="bi bi-x"></i></button>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="edge-address-bar">
+                        <input type="text" placeholder="输入网址..." id="edge-url">
+                        <button id="edge-go"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                    <iframe id="edge-iframe" src="about:blank"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 核心脚本 -->
+    <script src="./assets/js/core/desktop.js"></script>
+    <script src="./assets/js/core/window.js"></script>
+    <script src="./assets/js/core/taskbar.js"></script>
+    <!-- 应用脚本 -->
+    <script src="./assets/js/apps/calc.js"></script>
+    <script src="./assets/js/apps/notepad.js"></script>
+    <script src="./assets/js/apps/edge.js"></script>
+    <!-- 小组件脚本 -->
+    <script src="./assets/js/widgets/weather.js"></script>
+    <script src="./assets/js/widgets/monitor.js"></script>
+</body>
+</html>
